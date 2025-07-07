@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <p class="text-success fw-bold"><%= notice %></p>
+
+  <h3 class="text-center mb-4"> 👥 Manage Users</h3>
+
+  <div id="users">
+    <% @users.each do |user| %>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+        <div class="card shadow-lg border-0 mb-4 rounded-3 p-4 hover-shadow">
+            <div class="card-body">
+              <h5 class="card-title"> 👤 <%= user.fname %> <%= user.lname %></h5>
+              <p class="card-text"> 📧 <strong>Email:</strong> <%= user.email %></p>
+              <p class="card-text"><strong>Status:</strong> 
+                <span class="badge <%= user.acc_status == 'Active' ? 'bg-success' : 'bg-danger' %>">
+                  <%= user.acc_status %>
+                </span>
+              </p>
+              <a href="<%= user_path(user) %>" class="btn btn-warning">Manage User</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="<%= new_user_path %>" class="btn btn-success">+ New User</a>
+  </div>
+</div>

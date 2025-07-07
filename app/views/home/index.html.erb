@@ -1,0 +1,29 @@
+<h1 class="text-center mt-4">📜 Welcome to <span class="text-primary">MyQuote</span></h1>
+<p class="text-center text-muted">Your go-to place for inspirational quotes</p>
+
+<div class="container mt-4">
+  <h3 class="text-dark">✨ Recently Added Quotes</h3>
+  <hr class="mb-4"/>
+
+  <% if @quotes.any? %>
+  <div class="row">
+    <% @quotes.each do |quote| %>
+      <% if quote.is_public? %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-lg border-0 rounded-4 mb-4 p-4">
+            <div class="card-body">
+              <p class="mb-3 text-secondary" style="font-size: 1.5rem;">“<%= quote.qu_text %>”</p>
+              <p class="mb-1"><strong> 👤 Author:</strong> <%= "#{quote.author.fname} #{quote.author.lname}" %></p>
+              <% if quote.pub_year.present? %>
+                <p class="text-muted"><strong> 📅 Published Year:</strong> <%= quote.pub_year %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p class="text-center text-muted">No quotes available at the moment.</p>
+<% end %>
+</div>

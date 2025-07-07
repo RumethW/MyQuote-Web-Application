@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+<p class="h4 font-weight-bold text-center text-primary">Hello <%= session[:fname] %></p>
+<h3 class="text-center mb-4">📋 Standard User Dashboard</h3>
+
+<div>
+  <h3 class="text-dark">💬 All Quotes</h3>
+  <hr class="mb-4"/>
+
+<% if @quotes.any? %>
+  <div class="container mt-4">
+    <% @quotes.each do |quote| %>
+      <% if quote.is_public? %>  <!-- Ensure the quote is public -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-8">
+            <div class="card border-0 shadow-lg rounded-lg overflow-hidden">
+              <div class="card-body p-5">
+                <h4 class="card-title text-dark font-weight-bold mb-3 text-center" style="font-size: 1.5rem;"><%= quote.qu_text %></h4> <!-- Increased font size for quote text -->
+                <p class="card-text text-muted text-center mb-3">
+                  <strong>👤 Author:</strong> <%= "#{quote.author.fname} #{quote.author.lname}" %><br>
+                  <% if quote.pub_year.present? %>
+                    <strong>📅 Published Year:</strong> <%= quote.pub_year %>
+                  <% end %>
+                </p>
+
+                <!-- Link to Display Details Page -->
+                <div class="text-center">
+                  <%= link_to '🔍 See More Details', quote_display_path(quote), class: 'btn btn-primary' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p class="text-center text-muted">⚠️ No quotes available at the moment.</p>
+<% end %>

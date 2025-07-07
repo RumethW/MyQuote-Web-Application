@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Success Message -->
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+
+      <!-- User Details -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">User Details</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <strong>First Name:</strong> <%= @user.fname %>
+          </div>
+          <div class="mb-3">
+            <strong>Last Name:</strong> <%= @user.lname %>
+          </div>
+          <div class="mb-3">
+            <strong>Email Address:</strong> <%= @user.email %>
+          </div>
+          <div class="mb-3">
+            <strong>Password:</strong> 
+            <%= raw(@user.password_digest.present? ? '<span style="color: red;">ENCRYPTED</span>' : 'Not Set') %>
+          </div>
+          <div class="mb-3">
+            <strong>Account Status:</strong> <%= @user.acc_status.capitalize %>
+          </div>
+          <div class="mb-3">
+            <strong>Is Admin:</strong> <%= @user.is_admin ? 'Yes' : 'No' %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="d-flex justify-content-between mb-4">
+        <%= link_to "Edit this user", edit_user_path(@user), class: 'btn btn-info' %>
+        <%= link_to "Back to users", users_path, class: 'btn btn-secondary' %>
+      </div>
+
+      <!-- Status and Account Management Buttons -->
+      <div class="btn-group-vertical w-100">
+        <%= button_to "Suspend User", suspend_user_path(@user), method: :patch, class: 'btn btn-warning mb-2' %>
+        <%= button_to "Ban User", ban_user_path(@user), method: :patch, class: 'btn btn-dark mb-2' %>
+        <%= button_to "Activate User", activate_user_path(@user), method: :patch, class: 'btn btn-success mb-2' %>
+        <%= button_to "Delete Account", @user, method: :delete, class: 'btn btn-danger mb-2' %>
+      </div>
+    </div>
+  </div>
+</div>

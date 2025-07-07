@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+<p class="h4 font-weight-bold text-center text-primary">Hello <%= session[:fname] %></p>
+<h3 class="text-center my-4"> 📋 Administrator Dashboard</h3>
+
+<div class="container mt-4">
+  <h3 class="text-dark"> 💬 All Quotes</h3>
+  <hr class="mb-4"/>
+
+  <% if @quotes.any? %>
+    <div class="row">
+      <% @quotes.each do |quote| %>
+        <% if quote.is_public? %>
+          <div class="col-12 mb-4"> <!-- Full-width card in each row -->
+            <div class="card shadow-lg border-2 border-primary rounded-3"> <!-- Enhanced border with shadow -->
+              <div class="card-body">
+                <p class="mb-3 text-secondary" style="font-size: 1.5rem;">“<%= quote.qu_text %>”</p> <!-- Increased font size -->
+                <p class="mb-1"><strong> 👤 Author:</strong> <%= "#{quote.author.fname} #{quote.author.lname}" %></p>
+                <% if quote.pub_year.present? %>
+                  <p class="text-muted"><strong> 📅 Published Year:</strong> <%= quote.pub_year %></p>
+                <% end %>
+                <%= link_to '🔍 See More Details', quote_display_path(quote), class: 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center text-muted"> No quotes available at the moment.</p>
+  <% end %>
+</div>

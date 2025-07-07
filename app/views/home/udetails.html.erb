@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header text-center">
+      <h1> 🧑 Your Profile</h1>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-4 font-weight-bold">First Name:</div>
+        <div class="col-8"><%= @user.fname %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 font-weight-bold">Last Name:</div>
+        <div class="col-8"><%= @user.lname %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 font-weight-bold">Email Address:</div>
+        <div class="col-8"><%= @user.email %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 font-weight-bold">Is Admin:</div>
+        <div class="col-8"><%= @user.is_admin ? "Yes" : "No" %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 font-weight-bold">Account Status:</div>
+        <div class="col-8"><%= @user.acc_status.capitalize %></div>
+      </div>
+      <div>
+      <%= link_to 'Update Your Details', per_update_user_path(@user), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
