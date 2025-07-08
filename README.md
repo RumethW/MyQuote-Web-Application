@@ -1,24 +1,32 @@
-# README
+💬 QuoteHub – Full-Stack Web Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Developed a full-stack web application using Ruby on Rails for the backend and HTML for the frontend interface.
 
-Things you may want to cover:
+🔧 Features
 
-* Ruby version
 
-* System dependencies
+User Interface
 
-* Configuration
+  Search quotes by category
+  
+  Add new quotes
+  
+  Delete own quotes
 
-* Database creation
+  Manage quote visibility (Public or Private)
 
-* Database initialization
 
-* How to run the test suite
+Admin Interface
 
-* Services (job queues, cache servers, search engines, etc.)
+  Manage all quotes across the platform
 
-* Deployment instructions
+  Manage Authors
+  
+  Activate or suspend user accounts
+  
+  Handle full user management
+  
 
-* ...
+This system provides a clean and functional experience for users to explore and contribute quotes, while giving administrators robust tools for moderation and oversight.
+
+
