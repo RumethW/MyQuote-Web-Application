@@ -1,4 +1,4 @@
-💬 QuoteHub – Full-Stack Web Application
+💬 MyQuote – Full-Stack Web Application
 
 Developed a full-stack web application using Ruby on Rails for the backend and HTML for the frontend interface.
 
